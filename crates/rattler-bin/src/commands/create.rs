@@ -25,7 +25,7 @@ use rattler_conda_types::{
 use rattler_networking::{AuthenticationMiddleware, AuthenticationStorage};
 use rattler_repodata_gateway::{Gateway, RepoData, SourceConfig};
 use rattler_solve::{
-    libsolv_c::{self},
+    // libsolv_c::{self},
     resolvo, SolverImpl, SolverTask,
 };
 use reqwest::{Client, Url};
@@ -79,7 +79,7 @@ pub enum SolveStrategy {
 pub enum Solver {
     #[default]
     Resolvo,
-    LibSolv,
+    // LibSolv,
 }
 
 impl From<SolveStrategy> for rattler_solve::SolveStrategy {
@@ -266,7 +266,7 @@ pub async fn create(opt: Opt) -> anyhow::Result<()> {
     let solver_result =
         wrap_in_progress("solving", move || match opt.solver.unwrap_or_default() {
             Solver::Resolvo => resolvo::Solver.solve(solver_task),
-            Solver::LibSolv => libsolv_c::Solver.solve(solver_task),
+            // Solver::LibSolv => libsolv_c::Solver.solve(solver_task),
         })?;
 
     let required_packages: Vec<RepoDataRecord> = solver_result.records;
