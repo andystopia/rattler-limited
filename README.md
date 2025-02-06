@@ -7,6 +7,18 @@
     </picture>
 </a>
 
+
+This is my slightly modified, probably out of date at time of modification
+version of rattler which doesn't pull in libsolv_c to avoid a dependency
+on CMake, which my system doesn't have.
+
+Side note: It's shocking how many packages
+expect me to have CMake as a developer, and even more
+expect me to have brew and lzma provided through that,
+I like having a more minimal install, so my setup is
+XCode + Nix + SIP + Cargo. Perhaps Nix could pull in
+cargo for me, but I'm not using it for that right now.
+
 # Rattler: Rust crates for fast handling of conda packages
 
 ![License][license-badge]
